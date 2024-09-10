@@ -1,0 +1,11 @@
+# /my_custom_gpt/docker-compose.yml
+version: '3'
+services:
+  custom_gpt:
+    build: .
+    ports:
+      - "5001:5000"
+    environment:
+      - OPENAI_API_KEY=sk-LNITYQzEMMKEEC3TEJFRLj4Y72C5d1vC4lvhWjENoMT3BlbkFJ9pNrjeEgVfP5G5Yb5yyQZQPuDqXsZcwqI_1IDuwJ0A
+    volumes:
+      - ./app:/app
