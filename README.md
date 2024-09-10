@@ -1,2 +1,2 @@
 # Custom-GPT-
-Creating custom chat GPT on top of Open AI chat GPT  
+Creating custom GPT using Open AI API
