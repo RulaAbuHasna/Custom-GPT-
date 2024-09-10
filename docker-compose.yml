@@ -1,0 +1,12 @@
+# /my_custom_gpt/docker-compose.yml
+version: '3'
+services:
+  custom_gpt:
+    build: .
+    ports:
+      - "5001:5000"
+    environment:
+      # i'll add it in github actions
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./app:/app
