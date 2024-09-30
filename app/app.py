@@ -11,23 +11,23 @@ def custom_gpt():
     data = request.json
     if data is None:
         return jsonify({'error': 'No data provided'}), 400
-    prompt = data.get('prompt', '')
+    messages = data.get('messages', '')
 
-    if not prompt:
-        return jsonify({'error': 'No prompt provided'}), 400
+    if not messages:
+        return jsonify({'error': 'No messages provided'}), 400
 
     if not openai.api_key:
         return jsonify({'error': 'OpenAI API key not set'}), 500
 
     try:
-        response = openai.Completion.create(
-            engine="gpt-3.5-turbo-instruct",
-            prompt=prompt,
-            max_tokens=100,
+        response = openai.ChatCompletion.create(
+            model="gpt-4",  
+            messages=messages,
+            max_tokens=200  # Increased to allow for more detailed responses
         )
 
         return jsonify({
-            'response': response.choices[0].text.strip()
+            'response': response['choices'][0]['message']['content'].strip()
         })
 
     except openai.error.OpenAIError as e:
